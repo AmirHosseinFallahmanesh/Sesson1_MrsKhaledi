@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Demo
 {
@@ -10,19 +11,32 @@ namespace Demo
             //demoContext.Database.EnsureDeleted();
             //demoContext.Database.EnsureCreated();
 
+            //InsertDemo(demoContext);
+
+
+            var data = demoContext.Students.ToList();
+
+            Test();
+
+            Console.WriteLine("Done!");
+            Console.ReadKey();
+        }
+
+        private static void Test()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        private static void InsertDemo(DemoContext demoContext)
+        {
             Student student = new Student()
             {
                 Address = "Tehran",
                 Name = "amir",
-                Surname="amiri"
+                Surname = "amiri"
             };
             demoContext.Students.Add(student);
-            demoContext.SaveChanges();
-         
-
-
-            Console.WriteLine("Done!");
-            Console.ReadKey();
         }
     }
 }
